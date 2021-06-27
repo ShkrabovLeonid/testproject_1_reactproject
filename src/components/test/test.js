@@ -9,7 +9,7 @@ class Test extends React.Component{
   //     years: 26,
   //     name: 'NewName:' + this.props.name
   //   }
-  //   this.nextYear = ()=>{
+  //   this.nextYear = ()=>{  // Записать метод в конструктов. Будет работать без bind
   //     this.setState((state, props) =>{
   //       return {
   //         years: ++state.years,
