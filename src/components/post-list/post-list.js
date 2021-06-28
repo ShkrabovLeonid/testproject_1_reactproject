@@ -10,7 +10,12 @@ const PostList = (props) =>{
         // const {id, ...itemProps} = item;
         return(
             <li key={item.id} className='list-group-item'>
-                <PostListItem label={item.label} important={item.important} like={item.like}/>
+                <PostListItem
+                label={item.label}
+                important={item.important}
+                like={item.like}
+                onDelete={() => props.onDelete(item.id) }
+                />
             </li>
             // <li key={id} className='list-group-item'>
             //     <PostListItem {...itemProps}/>
