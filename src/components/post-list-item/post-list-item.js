@@ -4,32 +4,12 @@ import './post-list-item.scss'
 
 export default class PostListItem extends React.Component{
 
-    state = {
-        important: this.props.important,
-        like: this.props.like
-    }
-
-    onImportant = ()=>{
-        this.setState((state, props) => {
-            return {
-                important: !state.important
-            };
-        });
-    };
-    onLike = ()=>{
-        this.setState((state, props) => {
-            return {
-                like: !state.like
-            };
-        });
-    };
-
     render(){
         let classNames = 'app-list-item d-flex justify-content-between';
-        if(this.state.important){
+        if(this.props.important){
             classNames += ' important';
         }
-        if (this.state.like) {
+        if (this.props.like) {
             classNames += ' like';
         }
 
@@ -37,7 +17,7 @@ export default class PostListItem extends React.Component{
             <div className={classNames}>
             <span 
             className="app-list-item-label"
-            onClick={this.onLike}
+            onClick={this.props.onToggleLike}
             >
             {this.props.label}
             </span>
@@ -45,7 +25,7 @@ export default class PostListItem extends React.Component{
             <button 
             type="button" 
             className="btn-star btn-sm"
-            onClick={this.onImportant}
+            onClick={this.props.onToggleImportant}
             >
             <i className="fa fa-star"></i>
             </button>
