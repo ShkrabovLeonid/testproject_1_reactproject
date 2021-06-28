@@ -46,12 +46,12 @@ export default class App extends React.Component {
         });
     }
 
-    onToggleImportant = (id)=>{
+    onToggleName = (id, name) =>{
         this.setState((state, props) => {
             const index = state.data.findIndex(elem => elem.id === id);
             
             const old = state.data[index];
-            const newItem = {...old, important: !old.important};
+            const newItem = {...old, [name]: !old[name]};
 
             const before = state.data.slice(0,index);
             const after = state.data.slice(index + 1);
@@ -60,21 +60,13 @@ export default class App extends React.Component {
                 data: newArrData
             }
         });
+    }
+
+    onToggleImportant = (id)=>{
+        this.onToggleName(id, 'important');
     };
     onToggleLike = (id)=>{
-        this.setState((state, props) => {
-            const index = state.data.findIndex(elem => elem.id === id);
-            
-            const old = state.data[index];
-            const newItem = {...old, like: !old.like};
-
-            const before = state.data.slice(0,index);
-            const after = state.data.slice(index + 1);
-            const newArrData = [...before, newItem, ...after];
-            return {
-                data: newArrData
-            }
-        });
+        this.onToggleName(id, 'like');
     };
 
     searchPosts = (items, term)=>{
